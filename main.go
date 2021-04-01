@@ -1,4 +1,4 @@
-package lambda_face_collection
+package main
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"github.com/yofr4nk/lambda-face-collection/sessions"
 )
 
-var collectionId = "faces-container"
+var collectionId = "face-container-list"
 
 func HandleRequest(ctx context.Context, event events.S3Event) (string, error) {
 	var hasBeenCreated bool
@@ -23,19 +23,19 @@ func HandleRequest(ctx context.Context, event events.S3Event) (string, error) {
 	// Create a Rekognition client
 	rkc := rekognition.New(awsSession)
 
-	quantity := collections.GetFaceQuantity(&collectionId, rkc)
+	collectionARN, err := collections.GetCollection(&collectionId, rkc)
 
-	if quantity == 0 {
+	if err != nil || len(collectionARN) == 0 {
 		hasBeenCreated = collections.NewCollection(rkc, &collectionId)
 	}
 
-	if hasBeenCreated == false {
+	if hasBeenCreated == false && len(collectionARN) == 0 {
 		fmt.Print("could not create a new collection")
 
 		return "", errors.New("could not create a new collection")
 	}
 
-	return fmt.Sprintf("Collection created!"), nil
+	return fmt.Sprintf("This is your collection!, %s!", collectionARN), nil
 }
 
 func main() {

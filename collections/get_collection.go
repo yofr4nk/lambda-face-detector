@@ -1,11 +1,11 @@
 package collections
 
 import (
+	"fmt"
 	"github.com/aws/aws-sdk-go/service/rekognition"
-	"log"
 )
 
-func GetFaceQuantity(collectionId *string, rkc *rekognition.Rekognition) int64 {
+func GetCollection(collectionId *string, rkc *rekognition.Rekognition) (string, error) {
 	collectionInput := rekognition.DescribeCollectionInput{
 		CollectionId: collectionId,
 	}
@@ -13,11 +13,11 @@ func GetFaceQuantity(collectionId *string, rkc *rekognition.Rekognition) int64 {
 	collection, err := rkc.DescribeCollection(&collectionInput)
 
 	if err != nil {
-		log.Print("something went wrong creating collection " + err.Error())
+		fmt.Errorf("something went wrong describing collection %w", err)
 
-		return 0
+		return "", err
 	}
 
-	return *collection.FaceCount
+	return *collection.CollectionARN, nil
 
 }
