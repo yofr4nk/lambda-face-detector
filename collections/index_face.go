@@ -2,7 +2,7 @@ package collections
 
 import (
 	"github.com/aws/aws-sdk-go/service/rekognition"
-	"github.com/yofr4nk/lambda-face-collection/domain"
+	"github.com/yofr4nk/lambda-face-detector/domain"
 	"strings"
 )
 

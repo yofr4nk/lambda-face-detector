@@ -2,7 +2,7 @@ package collections
 
 import (
 	"fmt"
-	"github.com/yofr4nk/lambda-face-collection/domain"
+	"github.com/yofr4nk/lambda-face-detector/domain"
 )
 
 func SetCollection(searchParam domain.SearchParam) bool {

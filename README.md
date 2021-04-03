@@ -1,6 +1,6 @@
-# Face searching
+# Lambda Face Detector
 
-Scanning images and verificating faces in it, based on [Rekognition Searching faces in a collection](https://docs.aws.amazon.com/rekognition/latest/dg/collections.html) to search faces and compare with already indexed images.
+Scanning images and detecting faces in it, based on [Rekognition Searching faces in a collection](https://docs.aws.amazon.com/rekognition/latest/dg/collections.html) to search faces and compare with already indexed images.
 
 ## Searching faces in images flow
 

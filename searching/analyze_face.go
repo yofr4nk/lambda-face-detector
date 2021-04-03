@@ -3,8 +3,8 @@ package searching
 import (
 	"errors"
 	"fmt"
-	"github.com/yofr4nk/lambda-face-collection/collections"
-	"github.com/yofr4nk/lambda-face-collection/domain"
+	"github.com/yofr4nk/lambda-face-detector/collections"
+	"github.com/yofr4nk/lambda-face-detector/domain"
 )
 
 func AnalyzeFace(searchParam domain.SearchParam) (domain.SearchResponse, error) {

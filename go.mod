@@ -1,4 +1,4 @@
-module github.com/yofr4nk/lambda-face-collection
+module github.com/yofr4nk/lambda-face-detector
 
 go 1.14
 
